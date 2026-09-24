@@ -1,1 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SkyCast - Cloud Weather Intelligence
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- Animated Background -->
+
+<div class="background">
+
+    <div class="cloud cloud1">☁️</div>
+
+    <div class="cloud cloud2">☁️</div>
+
+    <div class="cloud cloud3">☁️</div>
+
+    <div class="sun">☀️</div>
+
+</div>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            ☁️
+        </div>
+
+        <div>
+
+            <h1>
+                SkyCast
+            </h1>
+
+            <p>
+                Cloud Weather Intelligence
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         DATE & TIME
+    ========================== -->
+
+    <div class="datetime">
+
+        <span id="currentDate">
+            --
+        </span>
+
+        <span>
+            •
+        </span>
+
+        <span id="currentTime">
+            --
+        </span>
+
+    </div>
+
+
+    <!-- PROJECT BADGE -->
+
+    <div class="project-badge">
+
+        <span>
+            ☁️
+        </span>
+
+        <strong>
+            Cloud Computing Mini Project
+        </strong>
+
+        <span>
+            •
+        </span>
+
+        <span>
+            SkyCast
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         SEARCH
+    ========================== -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="cityInput"
+            placeholder="Enter city name..."
+            autocomplete="off"
+        >
+
+        <button onclick="searchWeather()">
+
+            🔍 Search
+
+        </button>
+
+    </div>
+
+
+    <!-- LOCATION BUTTON -->
+
+    <button
+        class="location-button"
+        onclick="getMyLocation()"
+    >
+
+        📍 Use My Current Location
+
+    </button>
+
+
+    <!-- =========================
+         LOADING
+    ========================== -->
+
+    <div
+        id="loading"
+        class="loading"
+    >
+
+        <div class="spinner"></div>
+
+        <p>
+            Fetching weather data...
+        </p>
+
+    </div>
+
+
+    <!-- ERROR -->
+
+    <div id="error"></div>
+
+
+    <!-- =========================
+         CURRENT WEATHER
+    ========================== -->
+
+    <div
+        id="weatherCard"
+        class="weather-card"
+    >
+
+
+        <!-- LOCATION -->
+
+        <div class="location">
+
+            <span>
+                📍
+            </span>
+
+            <h2 id="city">
+                --
+            </h2>
+
+        </div>
+
+
+        <!-- MAIN WEATHER -->
+
+        <div class="main-weather">
+
+
+            <div class="weather-image">
+
+                <img
+                    id="weatherIcon"
+                    src=""
+                    alt="Weather"
+                >
+
+            </div>
+
+
+            <div class="temperature">
+
+                <h3 id="temperature">
+                    --°C
+                </h3>
+
+                <p id="description">
+                    --
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             WEATHER DETAILS
+        ========================== -->
+
+        <div class="weather-grid">
+
+
+            <div class="weather-item">
+
+                <div class="weather-symbol">
+                    🌡️
+                </div>
+
+                <div>
+
+                    <span>
+                        Feels Like
+                    </span>
+
+                    <strong id="feelsLike">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="weather-item">
+
+                <div class="weather-symbol">
+                    💧
+                </div>
+
+                <div>
+
+                    <span>
+                        Humidity
+                    </span>
+
+                    <strong id="humidity">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="weather-item">
+
+                <div class="weather-symbol">
+                    💨
+                </div>
+
+                <div>
+
+                    <span>
+                        Wind Speed
+                    </span>
+
+                    <strong id="wind">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="weather-item">
+
+                <div class="weather-symbol">
+                    🎚️
+                </div>
+
+                <div>
+
+                    <span>
+                        Pressure
+                    </span>
+
+                    <strong id="pressure">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="weather-item">
+
+                <div class="weather-symbol">
+                    🌅
+                </div>
+
+                <div>
+
+                    <span>
+                        Sunrise
+                    </span>
+
+                    <strong id="sunrise">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="weather-item">
+
+                <div class="weather-symbol">
+                    🌇
+                </div>
+
+                <div>
+
+                    <span>
+                        Sunset
+                    </span>
+
+                    <strong id="sunset">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WEATHER CARD FOOTER -->
+
+        <div class="weather-footer">
+
+            🌐 Live weather data powered by OpenWeather
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         5 DAY FORECAST
+    ========================== -->
+
+    <section
+        id="forecastSection"
+        class="forecast-section"
+    >
+
+        <h2>
+            📅 5-Day Forecast
+        </h2>
+
+
+        <div
+            id="forecastContainer"
+            class="forecast-container"
+        >
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECT TEAM
+    ========================== -->
+
+    <footer>
+
+
+        <div class="team-card">
+
+            <div class="team-title">
+
+                👥 Project Team
+
+            </div>
+
+
+            <div class="team-members">
+
+
+                <!-- Dweep -->
+
+                <div class="member">
+
+                    <div class="member-icon">
+                        👨‍💻
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Dweep Gajrani
+                        </strong>
+
+                        <span>
+                            Project Member
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Tisha -->
+
+                <div class="member">
+
+                    <div class="member-icon">
+                        👩‍💻
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Tisha Parmar
+                        </strong>
+
+                        <span>
+                            Project Member
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <p class="project-name">
+
+            ☁️ SkyCast – Cloud Weather Intelligence
+
+        </p>
+
+
+        <p class="footer-small">
+
+            Developed using Python • Flask • JavaScript • REST API
+
+        </p>
+
+
+        <p class="footer-small">
+
+            © 2026 Dweep Gajrani & Tisha Parmar
+
+        </p>
+
+
+    </footer>
+
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>
