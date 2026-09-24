@@ -1,1 +1,1254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #06b6d4,
+            #38bdf8
+        );
+
+    color: white;
+
+    overflow-x: hidden;
+
+    transition:
+        background 0.8s ease;
+
+}
+
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+}
+
+
+.cloud {
+
+    position: absolute;
+
+    font-size: 90px;
+
+    opacity: 0.18;
+
+    animation:
+        moveCloud 30s linear infinite;
+
+}
+
+
+.cloud1 {
+
+    top: 10%;
+
+    left: -150px;
+
+    animation-duration: 28s;
+
+}
+
+
+.cloud2 {
+
+    top: 35%;
+
+    left: -250px;
+
+    font-size: 130px;
+
+    animation-duration: 40s;
+
+}
+
+
+.cloud3 {
+
+    top: 65%;
+
+    left: -150px;
+
+    font-size: 70px;
+
+    animation-duration: 35s;
+
+}
+
+
+@keyframes moveCloud {
+
+    from {
+
+        transform:
+            translateX(-200px);
+
+    }
+
+    to {
+
+        transform:
+            translateX(
+                calc(100vw + 300px)
+            );
+
+    }
+
+}
+
+
+.sun {
+
+    position: absolute;
+
+    top: 5%;
+
+    right: 8%;
+
+    font-size: 100px;
+
+    opacity: 0.3;
+
+    animation:
+        sunGlow 3s ease-in-out infinite;
+
+}
+
+
+@keyframes sunGlow {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        opacity: 0.3;
+
+    }
+
+    50% {
+
+        transform: scale(1.1);
+
+        opacity: 0.5;
+
+    }
+
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 92%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 40px 0;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.logo {
+
+    font-size: 60px;
+
+    animation:
+        float 3s ease-in-out infinite;
+
+}
+
+
+@keyframes float {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+
+header h1 {
+
+    font-size: 44px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+}
+
+
+header p {
+
+    opacity: 0.9;
+
+    margin-top: 5px;
+
+    font-size: 17px;
+
+}
+
+
+/* =========================
+   DATE TIME
+========================= */
+
+.datetime {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+
+    font-size: 14px;
+
+    opacity: 0.9;
+
+}
+
+
+/* =========================
+   PROJECT BADGE
+========================= */
+
+.project-badge {
+
+    width: fit-content;
+
+    margin:
+        0 auto 25px;
+
+    padding:
+        9px 18px;
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(255,255,255,0.16);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    backdrop-filter:
+        blur(10px);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    color: white;
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.search-box input {
+
+    flex: 1;
+
+    height: 56px;
+
+    padding:
+        0 20px;
+
+    border: none;
+
+    border-radius:
+        15px;
+
+    font-size: 17px;
+
+    outline: none;
+
+    color: #1e293b;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,0.10);
+
+}
+
+
+.search-box input:focus {
+
+    box-shadow:
+        0 0 0 4px
+        rgba(255,255,255,0.25);
+
+}
+
+
+.search-box button {
+
+    height: 56px;
+
+    padding:
+        0 28px;
+
+    border: none;
+
+    border-radius:
+        15px;
+
+    background:
+        #0f172a;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        0.25s;
+
+}
+
+
+.search-box button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #020617;
+
+}
+
+
+/* =========================
+   LOCATION BUTTON
+========================= */
+
+.location-button {
+
+    display: block;
+
+    margin:
+        0 auto 25px;
+
+    padding:
+        12px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.4);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(255,255,255,0.15);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition:
+        0.25s;
+
+}
+
+
+.location-button:hover {
+
+    background:
+        rgba(255,255,255,0.25);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================
+   WEATHER CARD
+========================= */
+
+.weather-card {
+
+    background:
+        rgba(255,255,255,0.96);
+
+    color:
+        #1e293b;
+
+    border-radius:
+        28px;
+
+    padding:
+        35px;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,0.20);
+
+    display:
+        none;
+
+    animation:
+        cardAppear 0.5s ease;
+
+}
+
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.location {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.location h2 {
+
+    font-size: 30px;
+
+}
+
+
+/* =========================
+   MAIN WEATHER
+========================= */
+
+.main-weather {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin:
+        20px 0 30px;
+
+}
+
+
+.weather-image img {
+
+    width: 150px;
+
+    height: 150px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 8px 10px
+            rgba(0,0,0,0.15)
+        );
+
+    animation:
+        weatherFloat 3s
+        ease-in-out infinite;
+
+}
+
+
+@keyframes weatherFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+
+.temperature h3 {
+
+    font-size: 65px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+}
+
+
+.temperature p {
+
+    color:
+        #64748b;
+
+    text-transform:
+        capitalize;
+
+    font-size: 19px;
+
+    margin-top: 10px;
+
+}
+
+
+/* =========================
+   WEATHER DETAILS
+========================= */
+
+.weather-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.weather-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background:
+        #f1f5f9;
+
+    padding:
+        18px;
+
+    border-radius:
+        18px;
+
+    transition:
+        0.25s;
+
+}
+
+
+.weather-item:hover {
+
+    transform:
+        translateY(-4px);
+
+    background:
+        #e0f2fe;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.08);
+
+}
+
+
+.weather-symbol {
+
+    font-size: 30px;
+
+}
+
+
+.weather-item span {
+
+    display: block;
+
+    font-size: 13px;
+
+    color:
+        #64748b;
+
+    margin-bottom: 5px;
+
+}
+
+
+.weather-item strong {
+
+    font-size: 17px;
+
+    color:
+        #0f172a;
+
+}
+
+
+/* =========================
+   WEATHER FOOTER
+========================= */
+
+.weather-footer {
+
+    text-align: center;
+
+    border-top:
+        1px solid
+        #e2e8f0;
+
+    margin-top:
+        25px;
+
+    padding-top:
+        20px;
+
+    color:
+        #64748b;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================
+   FORECAST
+========================= */
+
+.forecast-section {
+
+    display:
+        none;
+
+    margin-top:
+        25px;
+
+}
+
+
+.forecast-section h2 {
+
+    text-align:
+        center;
+
+    margin-bottom:
+        18px;
+
+}
+
+
+.forecast-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap: 12px;
+
+}
+
+
+.forecast-card {
+
+    background:
+        rgba(255,255,255,0.95);
+
+    color:
+        #1e293b;
+
+    border-radius:
+        18px;
+
+    padding:
+        18px 10px;
+
+    text-align:
+        center;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,0.12);
+
+    transition:
+        0.25s;
+
+}
+
+
+.forecast-card:hover {
+
+    transform:
+        translateY(-7px)
+        scale(1.02);
+
+}
+
+
+.forecast-date {
+
+    font-weight:
+        bold;
+
+    font-size:
+        14px;
+
+}
+
+
+.forecast-card img {
+
+    width:
+        65px;
+
+    height:
+        65px;
+
+}
+
+
+.forecast-temp {
+
+    font-size:
+        22px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.forecast-description {
+
+    font-size:
+        12px;
+
+    color:
+        #64748b;
+
+    text-transform:
+        capitalize;
+
+    margin-top:
+        5px;
+
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+
+    display:
+        none;
+
+    text-align:
+        center;
+
+    padding:
+        20px;
+
+}
+
+
+.spinner {
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    margin:
+        auto;
+
+    border:
+        4px solid
+        rgba(255,255,255,0.3);
+
+    border-top:
+        4px solid white;
+
+    border-radius:
+        50%;
+
+    animation:
+        spin 0.8s
+        linear infinite;
+
+}
+
+
+@keyframes spin {
+
+    100% {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+#error {
+
+    text-align:
+        center;
+
+    font-weight:
+        bold;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+/* =========================
+   TEAM CARD
+========================= */
+
+footer {
+
+    text-align:
+        center;
+
+    margin-top:
+        25px;
+
+}
+
+
+.team-card {
+
+    margin:
+        25px auto 15px;
+
+    padding:
+        18px 25px;
+
+    max-width:
+        550px;
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.22);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.team-title {
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        15px;
+
+    letter-spacing:
+        0.5px;
+
+}
+
+
+.team-members {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        40px;
+
+}
+
+
+.member {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    text-align:
+        left;
+
+}
+
+
+.member-icon {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,0.18);
+
+    font-size:
+        21px;
+
+}
+
+
+.member strong {
+
+    display:
+        block;
+
+    font-size:
+        14px;
+
+}
+
+
+.member span {
+
+    display:
+        block;
+
+    margin-top:
+        3px;
+
+    font-size:
+        11px;
+
+    opacity:
+        0.75;
+
+}
+
+
+.project-name {
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    margin-top:
+        15px;
+
+}
+
+
+.footer-small {
+
+    font-size:
+        12px;
+
+    opacity:
+        0.75;
+
+    margin-top:
+        5px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .container {
+
+        width:
+            94%;
+
+        padding-top:
+            30px;
+
+    }
+
+
+    header {
+
+        flex-direction:
+            column;
+
+        text-align:
+            center;
+
+    }
+
+
+    header h1 {
+
+        font-size:
+            34px;
+
+    }
+
+
+    .search-box {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .search-box button {
+
+        width:
+            100%;
+
+    }
+
+
+    .main-weather {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .temperature {
+
+        text-align:
+            center;
+
+    }
+
+
+    .weather-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .forecast-container {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .team-members {
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        gap:
+            15px;
+
+    }
+
+}
+
+
+@media(max-width:450px) {
+
+    .weather-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .forecast-container {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .weather-card {
+
+        padding:
+            22px;
+
+    }
+
+
+    .temperature h3 {
+
+        font-size:
+            52px;
+
+    }
+
+
+    .project-badge {
+
+        font-size:
+            11px;
+
+        padding:
+            8px 12px;
+
+    }
+
+}
